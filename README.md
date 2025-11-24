@@ -4,15 +4,29 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ansh1113/quadruped-ppo/graphs/commit-activity)
 
 **A reinforcement learning approach to quadruped robot locomotion using Proximal Policy Optimization (PPO) in PyBullet simulation.**
 
 ## 🎯 Key Results
 
 - ✅ **30% Fewer Falls** - Reduced fall rate on uneven terrain vs PID baseline
-- ✅ **25% Faster** - Improved forward velocity while maintaining stability
+- ✅ **25% Faster** - Improved forward velocity while maintaining stability  
 - ✅ **Energy Efficient** - Minimized actuator torques and smooth motions
 - ✅ **Adaptive Gaits** - Automatically adjusts to different terrain difficulties
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [Results](#results)
+- [Project Structure](#project-structure)
+- [Citation](#citation)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 
