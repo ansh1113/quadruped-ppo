@@ -54,17 +54,12 @@ class QuadrupedEnv(gym.Env):
         p.setGravity(0, 0, -9.81)
         p.setTimeStep(self.dt)
         
-        # Load plane with terrain
-        self.plane_id = self._create_terrain()
+        # Load plane
+        self.plane_id = p.loadURDF("plane.urdf")
         
-        # Load quadruped robot
+        # Load quadruped robot (using sphere as placeholder)
         start_pos = [0, 0, 0.5]
         start_orientation = p.getQuaternionFromEuler([0, 0, 0])
-        
-        # Load actual quadruped URDF (placeholder - use your own)
-        # self.robot_id = p.loadURDF("quadruped.urdf", start_pos, start_orientation)
-        
-        # For demo: create simple body
         self.robot_id = p.loadURDF("sphere2.urdf", start_pos, start_orientation)
         
         self.prev_action = np.zeros(self.num_joints)
@@ -78,7 +73,6 @@ class QuadrupedEnv(gym.Env):
         
         # Apply control multiple times
         for _ in range(self.control_steps):
-            # Set joint positions (simplified)
             p.stepSimulation()
         
         self.step_counter += 1
@@ -96,32 +90,24 @@ class QuadrupedEnv(gym.Env):
         
         return obs, reward, done, info
     
-    def _create_terrain(self):
-        """Create terrain based on type."""
-        if self.terrain_type == 'flat':
-            return p.loadURDF("plane.urdf")
-        else:
-            # Create heightfield for uneven terrain
-            return p.loadURDF("plane.urdf")  # Simplified
-    
     def _get_observation(self):
         """Get current observation."""
         if self.robot_id is None:
-            return np.zeros(48)
+            return np.zeros(48, dtype=np.float32)
         
         # Get robot state
         pos, orn = p.getBasePositionAndOrientation(self.robot_id)
         vel, ang_vel = p.getBaseVelocity(self.robot_id)
         
         # Build observation (48-dim)
-        obs = np.zeros(48)
+        obs = np.zeros(48, dtype=np.float32)
         obs[0:3] = pos  # Body position
         obs[3:7] = orn  # Body orientation (quaternion)
         obs[7:10] = vel  # Linear velocity
         obs[10:13] = ang_vel  # Angular velocity
         # Joint states, contacts, etc. would go in remaining dims
         
-        return obs.astype(np.float32)
+        return obs
     
     def _compute_reward(self, action):
         """Compute reward as described in README."""
