@@ -263,10 +263,14 @@ class QuadrupedEnv(gym.Env):
                 self.foot_link_ids.append(joint_idx)
         
         # Verify we have correct number of joints
-        assert len(self.joint_ids) == self.num_joints, \
-            f"Expected {self.num_joints} joints, found {len(self.joint_ids)}"
-        assert len(self.foot_link_ids) == self.num_feet, \
-            f"Expected {self.num_feet} feet, found {len(self.foot_link_ids)}"
+        if len(self.joint_ids) != self.num_joints:
+            raise ValueError(
+                f"Expected {self.num_joints} joints, found {len(self.joint_ids)}"
+            )
+        if len(self.foot_link_ids) != self.num_feet:
+            raise ValueError(
+                f"Expected {self.num_feet} feet, found {len(self.foot_link_ids)}"
+            )
     
     def _get_initial_pose(self) -> List[float]:
         """
@@ -358,7 +362,9 @@ class QuadrupedEnv(gym.Env):
         obs[idx:idx+7] = terrain_heights
         idx += 7
         
-        assert idx == 48, f"Observation size mismatch: {idx} != 48"
+        # Verify observation size
+        if idx != 48:
+            raise RuntimeError(f"Observation size mismatch: {idx} != 48")
         
         return obs
     

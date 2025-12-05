@@ -8,7 +8,7 @@ including flat, uneven, stairs, slopes, and mixed terrains.
 import numpy as np
 import pybullet as p
 from typing import Tuple, Optional, List
-from scipy.ndimage import gaussian_filter
+from scipy.ndimage import gaussian_filter, zoom
 
 
 class TerrainGenerator:
@@ -312,7 +312,6 @@ class TerrainGenerator:
             low_res = np.random.randn(size // freq + 1, size // freq + 1) * amp
             
             # Upsample to full resolution
-            from scipy.ndimage import zoom
             upsampled = zoom(low_res, freq, order=1)
             
             # Add to heights (crop to exact size)

@@ -7,6 +7,7 @@ various performance metrics.
 
 from typing import Dict, Any, List, Optional
 import numpy as np
+from scipy.spatial.transform import Rotation
 from stable_baselines3.common.base_class import BaseAlgorithm
 import gym
 
@@ -230,8 +231,6 @@ def compute_stability_metrics(
         Dictionary with stability metrics
     """
     # Convert quaternions to euler angles
-    from scipy.spatial.transform import Rotation
-    
     rotations = Rotation.from_quat(orientations)
     euler_angles = rotations.as_euler('xyz')
     
