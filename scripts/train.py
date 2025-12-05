@@ -18,7 +18,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 from stable_baselines3.common.callbacks import CheckpointCallback, EvalCallback
 from stable_baselines3.common.monitor import Monitor
 
-# Import custom environment (you'll implement this)
+# Import custom environment
 from quadruped_ppo.envs import QuadrupedEnv
 
 
