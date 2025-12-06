@@ -10,37 +10,12 @@
 
 **A reinforcement learning approach to quadruped robot locomotion using Proximal Policy Optimization (PPO) in PyBullet simulation.**
 
-## 🚧 Implementation Status
+## Target Performance Goals
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Environment Structure | ✅ Complete | Full Gym interface implementation |
-| Quadruped URDF Model | ✅ Complete | 12 DOF (3 per leg) custom model |
-| Observation Space | ✅ Complete | All 48 dimensions implemented |
-| Action Control | ✅ Complete | Position control with proper joint limits |
-| Contact Sensors | ✅ Complete | PyBullet collision detection |
-| Flat Terrain | ✅ Complete | Basic flat ground |
-| Uneven Terrain | ✅ Complete | Procedural heightfield generation |
-| Stairs Terrain | ✅ Complete | Ascending/descending stairs |
-| Slopes Terrain | ✅ Complete | Inclined surfaces |
-| Mixed Terrain | ✅ Complete | Combined challenges with obstacles |
-| Reward Function | ✅ Complete | Multi-objective reward shaping |
-| Training Pipeline | ✅ Complete | PPO with Stable Baselines3 |
-| Test Suite | ✅ Complete | >80% code coverage |
-| Metrics & Analysis | ✅ Complete | Gait analysis, plotting, evaluation |
-| Documentation | ✅ Complete | Comprehensive docs and examples |
-| Pre-trained Models | 📋 Planned | Coming in v0.2.0 |
-| Video Demos | 📋 Planned | Coming in v0.2.0 |
-| Curriculum Learning | 📋 Planned | Coming in v0.2.0 |
-
-> **Note:** The performance metrics stated below are target goals. Actual trained models and results will be provided in upcoming releases.
-
-## 🎯 Target Performance Goals
-
-- 🎯 **30% Fewer Falls** - Target: Reduced fall rate on uneven terrain vs PID baseline
-- 🎯 **25% Faster** - Target: Improved forward velocity while maintaining stability  
-- 🎯 **Energy Efficient** - Target: Minimized actuator torques and smooth motions
-- 🎯 **Adaptive Gaits** - Target: Automatically adjusts to different terrain difficulties
+- **30% Fewer Falls** - Target: Reduced fall rate on uneven terrain vs PID baseline
+- **25% Faster** - Target: Improved forward velocity while maintaining stability  
+- **Energy Efficient** - Target: Minimized actuator torques and smooth motions
+- **Adaptive Gaits** - Target: Automatically adjusts to different terrain difficulties
 
 ## 📋 Table of Contents
 
